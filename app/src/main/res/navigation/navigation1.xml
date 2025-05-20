@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation1">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation1"
+    app:startDestination="@id/toDoListScreenFragment">
 
+    <fragment
+        android:id="@+id/toDoListScreenFragment"
+        android:name="com.example.todoapp.ui.ToDoListScreenFragment"
+        android:label="ToDo List"
+        tools:layout="@layout/fragment_to_do_list_screen">
+
+        <action
+            android:id="@+id/action_toDoListScreenFragment_to_toDoAddScreenFragment"
+            app:destination="@id/toDoAddScreenFragment" />
+
+        <action
+            android:id="@+id/action_toDoListScreenFragment_to_toDoDetailScreenFragment"
+            app:destination="@id/toDoDetailScreenFragment">
+            <argument
+                android:name="todo"
+                app:argType="com.example.todoapp.data.ToDo" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/toDoAddScreenFragment"
+        android:name="com.example.todoapp.ui.ToDoAddScreenFragment"
+        android:label="Yeni Görev"
+        tools:layout="@layout/fragment_to_do_add_screen">
+        <action
+            android:id="@+id/action_toDoAddScreenFragment_to_toDoDetailScreenFragment"
+            app:destination="@id/toDoDetailScreenFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/toDoDetailScreenFragment"
+        android:name="com.example.todoapp.ui.ToDoDetailScreenFragment"
+        android:label="Görev Detayı"
+        tools:layout="@layout/fragment_to_do_detail_screen">
+
+        <argument
+            android:name="todo"
+            app:argType="com.example.todoapp.data.ToDo" />
+    </fragment>
 </navigation>
